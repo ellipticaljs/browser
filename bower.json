@@ -1,7 +1,7 @@
 {
   "name": "elliptical-browser",
   "description": "Browser Implementation of Node Express style apps",
-  "version":"1.0.7",
+  "version":"1.0.8",
   "main": "dist/elliptical.browser.js",
   "authors": [
     "S. Francis"
