@@ -153,6 +153,7 @@ form button{
     background:transparent;
     color:#fff;
     opacity:.5;
+    cursor:pointer;
 }
 
 form button:before{
