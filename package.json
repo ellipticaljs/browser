@@ -1,29 +1,29 @@
 {
     "name": "elliptical-browser",
     "description": "Browser Implementation of Node Express style apps",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "author": "S. Francis",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/tachyon1337/elliptical-browser.git"
+        "url": "https://github.com/ellipticaljs/browser.git"
     },
     "dependencies":{
-        "elliptical-utils":"git+https://github.com/tachyon1337/elliptical-utils.git",
-        "dustjs":"git+https://github.com/tachyon1337/dustjs.git",
-        "elliptical-dust-helpers":"git+https://github.com/tachyon1337/elliptical-dust-helpers.git",
-        "elliptical-class":"git+https://github.com/tachyon1337/elliptical-class.git",
-        "elliptical-event":"git+https://github.com/tachyon1337/elliptical-event.git",
-        "elliptical-location":"git+https://github.com/tachyon1337/elliptical-location.git",
-        "elliptical-crypto":"git+https://github.com/tachyon1337/elliptical-crypto.git",
-        "elliptical-http":"git+https://github.com/tachyon1337/elliptical-http.git",
-        "elliptical-soa":"git+https://github.com/tachyon1337/elliptical-soa.git",
-        "elliptical-container":"git+https://github.com/tachyon1337/elliptical-container.git",
-        "elliptical-document":"git+https://github.com/tachyon1337/elliptical-document.git",
-        "elliptical-middleware":"git+https://github.com/tachyon1337/elliptical-middleware.git",
-        "elliptical-controller":"git+https://github.com/tachyon1337/elliptical-controller.git",
-        "elliptical-view":"git+https://github.com/tachyon1337/elliptical-view.git",
-        "elliptical-transitions":"git+https://github.com/tachyon1337/elliptical-transitions.git"
+        "elliptical-utils":"git+https://github.com/ellipticaljs/utils.git",
+        "dustjs":"git+https://github.com/ellipticaljs/dustjs.git",
+        "elliptical-dust-helpers":"git+https://github.com/ellipticaljs/dust-helpers.git",
+        "elliptical-class":"git+https://github.com/ellipticaljs/class.git",
+        "elliptical-event":"git+https://github.com/ellipticaljs/event.git",
+        "elliptical-location":"git+https://github.com/ellipticaljs/location.git",
+        "elliptical-crypto":"git+https://github.com/ellipticaljs/crypto.git",
+        "elliptical-http":"git+https://github.com/ellipticaljs/http.git",
+        "elliptical-soa":"git+https://github.com/ellipticaljs/soa.git",
+        "elliptical-container":"git+https://github.com/ellipticaljs/container.git",
+        "elliptical-document":"git+https://github.com/ellipticaljs/document.git",
+        "elliptical-middleware":"git+https://github.com/ellipticaljs/middleware.git",
+        "elliptical-controller":"git+https://github.com/ellipticaljs/controller.git",
+        "elliptical-view":"git+https://github.com/ellipticaljs/view.git",
+        "elliptical-transitions":"git+https://github.com/ellipticaljs/transitions.git"
     },
     "devDependencies": {
         "gulp": "^3.6.0",

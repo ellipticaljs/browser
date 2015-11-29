@@ -1,2 +1,2 @@
 
-module.exports=require('./lib/elliptical');
+module.exports=require('./lib/browser');
