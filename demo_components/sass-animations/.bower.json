@@ -1,0 +1,55 @@
+{
+  "name": "sass-animations",
+  "description": "Sass Animations",
+  "version": "1.0.2",
+  "main": "dist/all.css",
+  "authors": [
+    "S. Francis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "animations",
+    "transitions"
+  ],
+  "homepage": "https://github.com/ellipticaljs/sass-animations",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".gitignore",
+    ".npmignore",
+    "gulpfile.js",
+    "lib",
+    "docs",
+    "index.js",
+    "umd.js",
+    "package.json",
+    "demo",
+    "index.html",
+    "build.json",
+    "bundle.json",
+    ".nvmrc",
+    ".eslintrc",
+    "bin",
+    "CHANGELOG.md",
+    "demos",
+    "stylesheets",
+    "_index.scss",
+    "bk",
+    "sassdoc",
+    "src"
+  ],
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.2",
+    "commit": "254b31eeec8da3c2a34a5b4d1efd153b3f443f02"
+  },
+  "_source": "git://github.com/ellipticaljs/sass-animations.git",
+  "_target": "~1.0.1",
+  "_originalSource": "sass-animations"
+}

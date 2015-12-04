@@ -1,0 +1,56 @@
+{
+  "name": "elliptical-http",
+  "description": "Elliptical Http Library",
+  "version": "1.0.3",
+  "main": "dist/elliptical.http.js",
+  "authors": [
+    "S. Francis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "http",
+    "browser",
+    "node"
+  ],
+  "homepage": "https://github.com/ellipticaljs/http",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".gitignore",
+    ".npmignore",
+    "gulpfile.js",
+    "lib",
+    "docs",
+    "index.js",
+    "umd.js",
+    "package.json",
+    "demo",
+    "index.html",
+    "build.json",
+    "bundle.json",
+    ".nvmrc",
+    ".eslintrc",
+    "bin",
+    "CHANGELOG.md",
+    "demos",
+    "stylesheets",
+    "_index.scss",
+    "bk"
+  ],
+  "dependencies": {
+    "elliptical-crypto": "~1.0.2"
+  },
+  "_release": "1.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.3",
+    "commit": "183ace70bec2a89d524d3ab3aef0d21c1e680974"
+  },
+  "_source": "git://github.com/ellipticaljs/http.git",
+  "_target": "~1.0.2",
+  "_originalSource": "elliptical-http"
+}

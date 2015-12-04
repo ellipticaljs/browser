@@ -1,0 +1,40 @@
+{
+  "name": "md-icons",
+  "description": "Material Design Icons",
+  "version": "1.0.4",
+  "main": "dist/material.css",
+  "authors": [
+    "S. Francis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "material",
+    "design",
+    "icons"
+  ],
+  "homepage": "https://github.com/ellipticaljs/material-design-icons",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "_index.scss",
+    "gulpfile.js",
+    "docs",
+    "stylesheets",
+    "package.json",
+    ".gitignore",
+    "sassdoc"
+  ],
+  "_release": "1.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.4",
+    "commit": "92f13b57a5d5b9c7c28d6dd1936880fe6c24936d"
+  },
+  "_source": "git://github.com/ellipticaljs/material-design-icons.git",
+  "_target": "~1.0.4",
+  "_originalSource": "md-icons"
+}

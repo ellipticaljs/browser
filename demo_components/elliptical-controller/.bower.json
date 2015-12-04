@@ -1,0 +1,43 @@
+{
+  "name": "elliptical-controller",
+  "description": "Controller factory for an expressJS style application function/object",
+  "version": "1.0.7",
+  "main": "dist/elliptical.controller.js",
+  "authors": [
+    "S. Francis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Controller",
+    "factory"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/ellipticaljs/controller",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".gitignore",
+    ".npmignore",
+    "gulpfile.js",
+    "lib",
+    "docs",
+    "index.js",
+    "umd.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "elliptical-utils": "~2.0.0"
+  },
+  "_release": "1.0.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.7",
+    "commit": "f4d5429e4b700751f308addb6968a1fc56a1c3a3"
+  },
+  "_source": "git://github.com/ellipticaljs/controller.git",
+  "_target": "~1.0.2",
+  "_originalSource": "elliptical-controller"
+}

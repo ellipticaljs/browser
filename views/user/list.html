@@ -1,0 +1,40 @@
+<div class="flex space-between header" ea-bind="list">
+    <h3>Users</h3>
+    {#search}
+    <div class="search-result">Search: &quot;{pattern}&quot;</div>
+    {/search}
+    <div>
+        {#search}
+          <a href="/user/list/1"><span class="icon-refresh icon gray"></span></a>
+        {/search}
+        <a href="/"><span class="icon-arrow-back icon primary"></span></a>
+    </div>
+</div>
+{#users}
+<div class="flex">
+      <div class="cell">
+          <a href="/user/detail/{id}"><img src="{avatar}" class="avatar"></a>
+      </div>
+      <div class="cell">
+         <a href="/user/detail/{id}">{firstName} {lastName}</a>
+      </div>
+      <div class="cell">
+          <span>{street}</span>
+      </div>
+      <div class="cell">
+         <span>{city}</span>
+      </div>
+      <div class="cell">
+         <span>{state}</span>
+      </div>
+      <div class="cell">
+         <a href="/user/detail/{id}"><span class="icon-pageview icon"></span></a>
+      </div>
+</div>
+{/users}
+
+{^users}
+<div class="no-results">
+    Your search returned no results...
+</div>
+{/users}

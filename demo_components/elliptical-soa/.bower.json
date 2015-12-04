@@ -1,0 +1,63 @@
+{
+  "name": "elliptical-soa",
+  "description": "Elliptical Service Oriented Architecture",
+  "version": "1.0.10",
+  "main": "dist/elliptical.soa.js",
+  "authors": [
+    "S. Francis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "services",
+    "service",
+    "oriented",
+    "architecture"
+  ],
+  "homepage": "https://github.com/ellipticaljs/soa",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".gitignore",
+    ".npmignore",
+    "gulpfile.js",
+    "lib",
+    "docs",
+    "index.js",
+    "umd.js",
+    "package.json",
+    "demo",
+    "index.html",
+    "build.json",
+    "bundle.json",
+    ".nvmrc",
+    ".eslintrc",
+    "bin",
+    "CHANGELOG.md",
+    "demos",
+    "stylesheets",
+    "_index.scss",
+    "bk"
+  ],
+  "dependencies": {
+    "elliptical-utils": "~2.0.1",
+    "elliptical-class": "~1.0.2",
+    "elliptical-lodash": "~1.0.3",
+    "async": "~1.5.0",
+    "elliptical-http": "~1.0.2",
+    "elliptical-dustjs": "~2.7.9",
+    "elliptical-dust-helpers": "~1.0.1"
+  },
+  "_release": "1.0.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.10",
+    "commit": "5319906ab287a9b426ad3d781f6ba95c96bb0466"
+  },
+  "_source": "git://github.com/ellipticaljs/soa.git",
+  "_target": "~1.0.3",
+  "_originalSource": "elliptical-soa"
+}
