@@ -6,7 +6,6 @@ elliptical.module=(function(app){
     var View = elliptical.View;
     View.$transitionProvider = elliptical.$Transitions;
     var $Template = elliptical.$Template;
-    //$Template.setRoot('/');
     var Service=elliptical.Service;
     app.hashTag=true;
 
