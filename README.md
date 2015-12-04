@@ -24,7 +24,22 @@ bower install elliptical-browser
 
 ```
 
-##demo
+# Usage
+
+``` html
+
+<link rel="import" href="bower_components/elliptical-browser/elliptical-browser.html">
+
+```
+
+# Demo
+
+##online
+
+http://ellipticaljs.github.io/browser/
+
+
+##local
 
 ``` bash
 
