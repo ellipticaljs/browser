@@ -10,6 +10,11 @@ elliptical.module=(function(app){
     var Service=elliptical.Service;
     app.hashTag=true;
 
+    app.configure('production',function(){
+        $Template.setRoot('/browser');
+        app.virtualRoot='/browser';
+    });
+
     app.configure(function () {
         //app.router
         app.use(app.router);
