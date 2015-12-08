@@ -39,17 +39,3 @@ bower install elliptical-browser
 http://ellipticaljs.github.io/browser/
 
 
-##local
-
-``` bash
-
-git clone https://github.com/ellipticaljs/browser.git
-npm install
-bower install
-gulp demo
-python -m SimpleHTTPServer 8080
-
-
-```
-
-browser: localhost:8080
