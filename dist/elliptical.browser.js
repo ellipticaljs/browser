@@ -639,7 +639,7 @@
     var EMPTY='';
     var HTML='html';
 
-    console.log(Event);
+
 
     return {
         /**
