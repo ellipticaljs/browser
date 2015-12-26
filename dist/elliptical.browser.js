@@ -1423,15 +1423,29 @@
 }(this, function (utils,soa,Location,Event,middleware,http,crypto,application,Response,Request) {
 
 
-
     /* expose a try...catch  facade */
     soa.Try=function(next,fn){
+        var throwNotFound=function(msg){
+            var message='Page Not Found';
+            if(msg) message=msg;
+            var err={
+                statusCode:404,
+                message:message,
+                description:'The resource you are looking for could have been removed, had its name changed, or is temporarily unavailable.  Please review the following URL and make sure that it is spelled correctly.'
+            };
+            next(err);
+        };
+
+        var context={
+            throwNotFound:throwNotFound
+        };
         try{
-            fn.apply(this,arguments);
+            fn.apply(context,arguments);
         }catch(ex){
             next(ex);
         }
     };
+
 
 
     /**
