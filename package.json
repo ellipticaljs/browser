@@ -1,7 +1,7 @@
 {
     "name": "elliptical-browser",
     "description": "Browser Implementation of Node Express style apps",
-    "version": "1.0.16",
+    "version": "1.0.17",
     "author": "S. Francis",
     "license": "MIT",
     "repository": {
@@ -23,7 +23,8 @@
         "elliptical-middleware":"git+https://github.com/ellipticaljs/middleware.git",
         "elliptical-controller":"git+https://github.com/ellipticaljs/controller.git",
         "elliptical-view":"git+https://github.com/ellipticaljs/view.git",
-        "elliptical-transitions":"git+https://github.com/ellipticaljs/transitions.git"
+        "elliptical-transitions":"git+https://github.com/ellipticaljs/transitions.git",
+        "elliptical-template":"git+https://github.com/ellipticaljs/template.git"
     },
     "devDependencies": {
         "gulp": "^3.6.0",

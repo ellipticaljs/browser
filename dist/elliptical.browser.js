@@ -609,20 +609,27 @@
 (function (root, factory) {
     if (typeof module !== 'undefined' && module.exports) {
         //commonjs
-        module.exports = factory(require('async'), require('elliptical-utils'), require('elliptical-soa'), require('elliptical-event'), require('elliptical-location'),
-            require('elliptical-view'), require('elliptical-container'), require('./request'), require('./response'), require('./delegate.request'), require('./delegate.submit'), require('./function.patch'));
+        module.exports = factory(require('async'), require('elliptical-utils'), require('elliptical-soa'),
+            require('elliptical-event'), require('elliptical-location'),
+            require('elliptical-view'), require('elliptical-template'), require('elliptical-container'),
+            require('./request'), require('./response'), require('./delegate.request'),
+            require('./delegate.submit'), require('./function.patch'));
     } else if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['async', 'elliptical-utils', 'elliptical-soa', 'elliptical-event', 'elliptical-location',
-            'elliptical-view', 'elliptical-container', './request', './response', 'elliptical-router', './delegate.request', './delegate.submit', './function.patch'], factory);
+            'elliptical-view', 'elliptical-container',
+            './request', './response', 'elliptical-router',
+            './delegate.request', './delegate.submit', './function.patch'], factory);
     } else {
         //browser
 
         root.elliptical.application = factory(root.async, root.elliptical.utils, root.elliptical, root.elliptical.Event, root.elliptical,
-            root.elliptical.View, root.elliptical.Container, root.elliptical.Request, root.elliptical.Response, root.elliptical.delegate.request, root.elliptical.delegate.submit);
+            root.elliptical.View, root.elliptical.$Template,root.elliptical.Container, root.elliptical.Request,
+            root.elliptical.Response, root.elliptical.delegate.request, root.elliptical.delegate.submit);
+
         root.returnExports = root.elliptical.browser;
     }
-}(this, function (async, utils, soa, Event, location, View, Container, Request, Response, request, submit) {
+}(this, function (async, utils, soa, Event, location, View, $Template,Container, Request, Response, request, submit) {
 
     var Router = location.Router;
     var Location=location.Location;
@@ -753,7 +760,7 @@
             //pagination provider
             Service.$paginationProvider = soa.$Pagination;
             //set the view provider to the template provider
-            View.$provider = soa.$Template;
+            View.$provider = $Template;
         },
 
 
@@ -1408,19 +1415,26 @@
 (function (root, factory) {
     if (typeof module !== 'undefined' && module.exports) {
         //commonjs
-        module.exports = factory(require('elliptical-utils'),require('elliptical-soa'),require('elliptical-location'),require('elliptical-event'),require('elliptical-middleware'),
-            require('elliptical-http'),require('elliptical-crypto'), require('./application'),require('./response'),require('./request'));
+        module.exports = factory(require('elliptical-utils'),require('elliptical-soa'),require('elliptical-location'),
+            require('elliptical-event'),require('elliptical-middleware'),require('elliptical-template'),
+            require('elliptical-http'),require('elliptical-crypto'),
+            require('./application'),require('./response'),require('./request'));
     } else if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['elliptical-utils','elliptical-soa','elliptical-location','elliptical-event','elliptical-middleware', 'elliptical-http','elliptical-crypto','./application',
+        define(['elliptical-utils','elliptical-soa','elliptical-location',
+            'elliptical-event','elliptical-middleware', 'elliptical-http',
+            'elliptical-crypto','./application',
             './response','./request'], factory);
     } else {
         //browser
-        root.elliptical.browser=factory(root.elliptical.utils,root.elliptical,root.elliptical.Location,root.elliptical.Event,root.elliptical.middleware,root.elliptical.http,
-            root.elliptical.crypto,root.elliptical.application,root.elliptical.Response,root.elliptical.Request);
+        root.elliptical.browser=factory(root.elliptical.utils,root.elliptical,root.elliptical.Location,
+            root.elliptical.Event,root.elliptical.middleware,root.elliptical.$Template,
+            root.elliptical.http, root.elliptical.crypto,root.elliptical.application,
+            root.elliptical.Response,root.elliptical.Request);
+
         root.returnExports = root.elliptical.browser;
     }
-}(this, function (utils,soa,Location,Event,middleware,http,crypto,application,Response,Request) {
+}(this, function (utils,soa,Location,Event,middleware,$Template,http,crypto,application,Response,Request) {
 
 
     /* expose a try...catch  facade */
@@ -1460,7 +1474,7 @@
     exports_.http=http;
     exports_.crypto = crypto;
     exports_.Location=location.Location;
-
+    exports_.$Template=$Template;
 
     /**
      * @return {Function}
