@@ -453,7 +453,12 @@
             this.links = function (links) {
 
             };
-
+            this.scrollTop=function(delay){
+                if(delay===undefined) delay=100;
+                setTimeout(function(){
+                    window.scrollTo(0,0);
+                },delay);
+            };
         },
 
         /**
@@ -555,7 +560,6 @@
          * @public
          */
         setContext: function (context) {
-            var _ = utils._;
             var req = this.req;
             req.session = req.session || {};
             Object.assign(req.session, context);
@@ -1358,6 +1362,7 @@
             var intDelay = (delay && delay !== undefined) ? parseInt(delay) : 0;
 
             //render...if onBeforeRender hook is defined, pass to it before rendering the view
+
             if (typeof app.viewCallback != 'undefined') {
                 app.viewCallback(req, this, context, function (data) {
                     setTimeout(function () {
