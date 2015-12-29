@@ -1,7 +1,7 @@
 {
   "name": "elliptical-browser",
   "description": "Browser Implementation of Node Express style apps",
-  "version":"1.0.17",
+  "version":"1.0.18",
   "main": "dist/elliptical.browser.js",
   "authors": [
     "S. Francis"
@@ -59,6 +59,7 @@
     "elliptical-view": "~1.0.4",
     "elliptical-transitions": "~1.0.3",
     "elliptical-utils": "~2.0.4",
+    "elliptical-template":"~1.0.1",
     "elliptical-binding": "~1.0.3",
     "elliptical-generic-repository": "~1.0.1",
     "faker": "Faker#~3.0.1",
