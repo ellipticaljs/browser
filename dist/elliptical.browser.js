@@ -14,7 +14,6 @@
 
 
 
-
 (function (root, factory) {
     if (typeof module !== 'undefined' && module.exports) {
         //commonjs
@@ -36,9 +35,12 @@
     //data-route attr excluded from delegated capture
     var SELECTOR='a:not([data-route])';
     var DOCUMENT=$(document);
-
+    var RUNNING=false;
+    
     return function request(){
-
+        if(RUNNING) return;
+        else RUNNING=true;
+        
         DOCUMENT.on(EVENT, SELECTOR, onRequest);
 
         function onRequest(event) {
@@ -360,7 +362,6 @@
 }));
 
 
-
 (function (root, factory) {
     if (typeof module !== 'undefined' && module.exports) {
         //commonjs
@@ -459,6 +460,19 @@
                     window.scrollTo(0,0);
                 },delay);
             };
+            
+            this.animateScrollTop=function (delay) {
+                if(delay===undefined) delay=100;
+                if ($.device.touch) {
+                   setTimeout(function () {
+                       window.scrollTo(0, 0);
+                   }, 100);
+                 }else{
+                     $('html,body').animate({
+                        scrollTop: 0
+                     }, 500);
+                 }
+            }    
         },
 
         /**
@@ -609,7 +623,6 @@
     return Response;
 
 }));
-
 (function (root, factory) {
     if (typeof module !== 'undefined' && module.exports) {
         //commonjs
@@ -639,8 +652,10 @@
     var Location=location.Location;
     var url_ = location.url;
     var network=utils.network;
+    var CALLBACK_EXECUTION_DELAY=500;
     var ROUTE_DISPATCH='OnRouteDispatch';
     var DOCUMENT_HISTORY='OnDocumentHistory';
+    var DOCUMENT_HISTORY_REQUEST='OnDocumentHistoryRequest';
     var APP_ROUTER='appRouter';
     var PRODUCTION='production';
     var DEVELOPMENT='development';
@@ -674,8 +689,8 @@
             this.Router = Router;
             this.utils = utils;
             this._defineProps();
-            this.isHistory = false;
             this.container=Container;
+            this._historyEventListener();
 
             var initStack = function (app) {
 
@@ -1248,25 +1263,32 @@
          * @private
          */
         _start:function(history){
+             //if history is already active, exit
+            if(this.history) return;
+            
             //if false is passed as the param, oblige the request, start submit only, then exit
             if(!history){
                 submit();
                 return;
             }
-
-            ////----start history----------------------------
-            var app_ = this;
-            var env = this.getEnvironment();
-
-            //set the private flag
-            this.isHistory = true;
-
+            
+            //set the flag to indicate html5 history is active
+            this.history=true;
+            
             //form actions
             submit();
 
             //http get requests
             request();
 
+            // start history
+            this._startHistory();
+        },
+        
+         _startHistory:function(){
+            var app_ = this;
+            var env = this.getEnvironment();
+            
             /* subscribe to the router dispatch event */
             this.onDispatchRequest();
 
@@ -1285,14 +1307,29 @@
                 });
             }
         },
-
-
+        
+         _startHistoryFromRequest:function(event,data){
+            console.log('history started');
+            if(data==undefined) data={};
+            var disableRedirectOnStart=data.disableRedirectOnStart;
+             //if history is already active, exit
+            if(this.history) return;
+            
+             //set the flag to indicate html5 history is active
+            this.history=true;
+            if(disableRedirectOnStart) Router.History.redirectOnStart=false;
+             //form actions
+            submit();
+            // start history
+            this._startHistory();
+        },
+        
+        
         /**
          *
          * @private
          */
         _setLocationHistoryService: function () {
-            this.history = true;
             Location.redirect = function (route) {
                 Router.location(route, GET, null);
             };
@@ -1301,6 +1338,10 @@
                 var route = Location.href;
                 Router.location(route, GET);
             };
+        },
+        
+        _historyEventListener:function(){
+            $(document).on(DOCUMENT_HISTORY_REQUEST, this._startHistoryFromRequest.bind(this));
         },
 
 
