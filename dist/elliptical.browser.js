@@ -1348,17 +1348,6 @@
         /**
          *  **History Enabled Only**
          *
-         * define a onBeforeRender hook
-         * @param fn {Function}
-         * @public
-         */
-        onBeforeRender: function (fn) {
-            if (typeof fn === 'function') this.viewCallback = fn;
-        },
-
-        /**
-         *  **History Enabled Only**
-         *
          * render view
          * @param {object} context
          * @param {string|object} template
@@ -1404,8 +1393,8 @@
 
             //render...if onBeforeRender hook is defined, pass to it before rendering the view
 
-            if (typeof app.viewCallback != 'undefined') {
-                app.viewCallback(req, this, context, function (data) {
+            if (typeof app.onBeforeRender === 'function') {
+                app.onBeforeRender(req,req.res, context, function (data) {
                     setTimeout(function () {
                         _render(data);
                     }, intDelay)
