@@ -145,6 +145,8 @@
     var url=location.url;
     var $Cookie=soa.$Cookie;
     var $Session=soa.$Session;
+    var cookieCount=$Cookie.count();
+    var sessionCount=$Session.count();
 
     var Request;
     Request = Class.extend({}, {
@@ -330,12 +332,12 @@
                 }
             });
             this.session = {};
-            for (var i = 0; i < $Session.count; i++) {
+            for (var i = 0; i < sessionCount; i++) {
                 var k = $Session.key(i);
                 this.session[k] = $Session.get(k);
             }
             this.cookies = {};
-            for (var j = 0 ; i < $Cookie.count; j++) {
+            for (var j = 0 ; j < cookieCount; j++) {
                 var k1=$Cookie.key(j);
                 this.cookies[k1] = $Cookie.get(k1);
             }
