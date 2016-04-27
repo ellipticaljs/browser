@@ -145,8 +145,8 @@
     var url=location.url;
     var $Cookie=soa.$Cookie;
     var $Session=soa.$Session;
-    var cookieCount=$Cookie.count();
-    var sessionCount=$Session.count();
+    var cookieCount;
+    var sessionCount;
 
     var Request;
     Request = Class.extend({}, {
@@ -160,7 +160,8 @@
             this.body = {};
             this.route = {};
             this.files = {};
-
+            cookieCount=$Cookie.count();
+            sessionCount=$Session.count();
 
             Object.defineProperties(this, {
                 'path': {
