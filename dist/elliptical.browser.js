@@ -581,33 +581,7 @@
             req.session = req.session || {};
             Object.assign(req.session, context);
         },
-
-        /**
-         * bind new instance of app.contextHelpers() to response
-         * @returns {object}
-         * @public
-         */
-        contextHelpers: function () {
-            var req = this.req;
-            var app = req.app;
-            return new app.contextHelpers();
-        },
-
-        /**
-         *
-         * @returns {{submitLabel: {css: string, cssDisplay: string, message: string}}}
-         * @public
-         */
-        formContext: function () {
-            return {
-                submitLabel: {
-                    css: "",
-                    cssDisplay: "",
-                    message: "&nbsp;"
-                }
-            }
-        },
-
+        
         /**
          * convenience method to execute function or next() based on error object
          * @param {object} err
@@ -631,25 +605,24 @@
         //commonjs
         module.exports = factory(require('async'), require('elliptical-utils'), require('elliptical-soa'),
             require('elliptical-event'), require('elliptical-location'),
-            require('elliptical-view'), require('elliptical-template'), require('elliptical-container'),
+            require('elliptical-view'), require('elliptical-template'),
             require('./request'), require('./response'), require('./delegate.request'),
-            require('./delegate.submit'), require('./function.patch'));
+            require('./delegate.submit'));
     } else if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['async', 'elliptical-utils', 'elliptical-soa', 'elliptical-event', 'elliptical-location',
-            'elliptical-view', 'elliptical-container',
-            './request', './response', 'elliptical-router',
-            './delegate.request', './delegate.submit', './function.patch'], factory);
+            'elliptical-view','elliptical-template', './request', './response',
+            './delegate.request', './delegate.submit'], factory);
     } else {
         //browser
 
         root.elliptical.application = factory(root.async, root.elliptical.utils, root.elliptical, root.elliptical.Event, root.elliptical,
-            root.elliptical.View, root.elliptical.$Template,root.elliptical.Container, root.elliptical.Request,
+            root.elliptical.View, root.elliptical.$Template,root.elliptical.Request,
             root.elliptical.Response, root.elliptical.delegate.request, root.elliptical.delegate.submit);
 
         root.returnExports = root.elliptical.browser;
     }
-}(this, function (async, utils, soa, Event, location, View, $Template,Container, Request, Response, request, submit) {
+}(this, function (async, utils, soa, Event, location, View, $Template,Request, Response, request, submit) {
 
     var Router = location.Router;
     var Location=location.Location;
@@ -679,8 +652,6 @@
         init: function () {
             window.elliptical.$hashTag = false;
             this.history = false;
-            this.async = async;
-            this.factory = soa.factory;
             this.contextSettings();
             this.setEnvironment();
             this.$setDefaultProviders();
@@ -690,11 +661,9 @@
             /* init locations */
             this.locations = [];
             this.Router = Router;
-            this.utils = utils;
             this._defineProps();
-            this.container=Container;
             this._historyEventListener();
-
+            this.context={};
             var initStack = function (app) {
 
                 app.router = function appRouter() {
@@ -914,25 +883,7 @@
             Router.delete(route, callbacks);
         },
 
-
-        /**
-         *  **History Enabled Only**
-         *
-         * @returns {object}
-         * @public
-         */
-        contextHelpers: function () {
-            this.form = function () {
-                return {
-                    submitLabel: {
-                        cssDisplay: 'hidden',
-                        message: '&nbsp;'
-                    }
-                }
-            };
-        },
-
-
+        
         /**
          *
          * context settings
@@ -1261,6 +1212,18 @@
         },
 
         /**
+         * 
+         * @param {function} fn 
+         */
+        onHistory:function(fn){
+            var app_ = this;
+            document.addEventListener(DOCUMENT_HISTORY, function (event) {
+                var data = event.detail;
+                fn.call(app_, data);
+            });
+        },
+
+        /**
          *
          * @param {boolean} history
          * @private
@@ -1301,14 +1264,7 @@
             ///start Router
             if (env === PRODUCTION) Router.debug = false;
             Router.start();
-
-            //setup convenient callback for history that allows for DI
-            app_.history = function (fn) {
-                document.addEventListener(DOCUMENT_HISTORY, function (event) {
-                    var data = event.detail;
-                    fn.call(app_, data, app_.container);
-                });
-            }
+             
         },
         
          _startHistoryFromRequest:function(event,data){
@@ -1474,32 +1430,7 @@
     }
 }(this, function (utils,soa,Location,Event,middleware,$Template,http,crypto,application,Response,Request) {
 
-
-    /* expose a try...catch  facade */
-    soa.Try=function(next,fn){
-        var throwNotFound=function(msg){
-            var message='Page Not Found';
-            if(msg) message=msg;
-            var err={
-                statusCode:404,
-                message:message,
-                description:'The resource you are looking for could have been removed, had its name changed, or is temporarily unavailable.  Please review the following URL and make sure that it is spelled correctly.'
-            };
-            next(err);
-        };
-
-        var context={
-            throwNotFound:throwNotFound
-        };
-        try{
-            fn.apply(context,arguments);
-        }catch(ex){
-            next(ex);
-        }
-    };
-
-
-
+    
     /**
      * Expose createApplication().
      */
@@ -1536,8 +1467,14 @@
 
     /* expose elliptical */
     Object.assign(exports_, soa);
+    Object.assign(exports_,window.elliptical);
 
-    window.elliptical=exports_;
+    Object.defineProperty(window, 'elliptical', {
+        get: function() { return exports_; },
+        set: function(newValue) { exports_[newValue]=newValue; },
+        enumerable: true,
+        configurable: true
+    });
     window.elliptical.$virtualRoot='/';
 
     return exports_;
