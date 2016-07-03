@@ -1,7 +1,7 @@
 {
     "name": "elliptical-browser",
     "description": "ExpressJS Browser style app",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "author": "S. Francis",
     "license": "MIT",
     "repository": {
@@ -24,7 +24,9 @@
         "elliptical-controller":"git+https://github.com/ellipticaljs/controller.git",
         "elliptical-view":"git+https://github.com/ellipticaljs/view.git",
         "elliptical-transitions":"git+https://github.com/ellipticaljs/transitions.git",
-        "elliptical-template":"git+https://github.com/ellipticaljs/template.git"
+        "elliptical-template":"git+https://github.com/ellipticaljs/template.git",
+        "elliptical-dom-event":"git+https://github.com/ellipticaljs/dom-event.git",
+        "elliptical-notification":"git+https://github.com/ellipticaljs/notification.git"
     },
     "devDependencies": {
         "gulp": "^3.6.0",
