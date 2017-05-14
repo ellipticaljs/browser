@@ -1,7 +1,7 @@
 {
     "name": "elliptical-browser",
     "description": "ExpressJS Browser style app",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "author": "S. Francis",
     "license": "MIT",
     "repository": {
