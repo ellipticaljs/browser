@@ -117,7 +117,7 @@
                 element: this
             };
 
-            if(this.action && this.action!=='') DOCUMENT.trigger(REQUEST_EVENT, data);
+            //if(this.action && this.action!=='') DOCUMENT.trigger(REQUEST_EVENT, data);
             DOCUMENT.trigger(SUBMIT_EVENT, data);
         }
 
